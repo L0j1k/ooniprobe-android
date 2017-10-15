@@ -55,7 +55,7 @@ public class NotificationService {
             if (FirebaseInstanceId.getInstance().getToken() != null)
                 device_token = FirebaseInstanceId.getInstance().getToken();
             else
-                device_token = null;
+                device_token = "";
 
             final IntentFilter mIFNetwork = new IntentFilter();
             mIFNetwork.addAction(android.net.ConnectivityManager.CONNECTIVITY_ACTION);
@@ -90,7 +90,7 @@ public class NotificationService {
         */
 
         //if device_token is null the user hasn't enabled push notifications
-        if (device_token == null) return;
+        if (device_token == null) device_token = "";
 
         final OrchestrateClient client = new OrchestrateClient();
         client.set_verbosity(LogSeverity.LOG_DEBUG);
